@@ -1,6 +1,11 @@
 exit-intent-popup
 =================
 
+# Fork details
+The only change that was made was adding the "show anyway" mode.
+This mode (when enabled) is making the script work on a whichever comes first basis.
+Basically what this means is that the popup will be shown either when the user shows intent to exit, or when the delay time has passed, whichever came first...
+
 # Features
 
 * Fully customizable via HTML and CSS.

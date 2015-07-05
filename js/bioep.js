@@ -16,6 +16,7 @@ window.bioEp = {
 	delay: 5,
 	showOnDelay: false,
 	cookieExp: 30,
+	showAnyway: false,
 	
 	// Object for handling cookies, taken from QuirksMode
 	// http://www.quirksmode.org/js/cookies.html
@@ -226,6 +227,7 @@ window.bioEp = {
 		this.delay = (typeof opts.delay === 'undefined') ? this.delay : opts.delay;
 		this.showOnDelay = (typeof opts.showOnDelay === 'undefined') ? this.showOnDelay : opts.showOnDelay;
 		this.cookieExp = (typeof opts.cookieExp === 'undefined') ? this.cookieExp : opts.cookieExp;
+		this.showAnyway = (typeof opts.showAnyway === 'undefined') ? this.showAnyway : opts.showAnyway;
 	},
 
 	// Ensure the DOM has loaded
@@ -249,10 +251,15 @@ window.bioEp = {
 			
 			// Add the popup
 			bioEp.addPopup();
+
+			// Check if show anyway mode is on
+			if(bioEp.showAnyway)
+				bioEp.loadEvents();
 			
 			// Load events
 			setTimeout(function() { 
-				bioEp.loadEvents();
+				if(!bioEp.showAnyway)
+					bioEp.loadEvents();
 
 				if(bioEp.showOnDelay)
 					bioEp.showPopup();
